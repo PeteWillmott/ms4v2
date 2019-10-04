@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
-# import env
+import env
 import django_heroku
 import dj_database_url
 
@@ -159,4 +159,5 @@ STATIC_URL='https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
 AWS_S3_FILE_OVERWRITE = False
 AWS_DEFAULT_ACL = None
 
-django_heroku.settings(locals())
+# django_heroku.settings(locals())
+django_heroku.settings(locals(), staticfiles=False)
