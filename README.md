@@ -70,6 +70,7 @@ Navigation was designed to be obvious and intuitive with consistency a must, onl
 
 Balsamiq [wireframes](https://petes-gp-bucket.s3.eu-central-1.amazonaws.com/NewProject.bmpr)
 
+
 ### Features
 
 The features of the website are intended to be in the background allowing the products to shine.
@@ -160,7 +161,7 @@ At the end of development `python.manage.py test` indicated all tests were passi
 
 Each page was manually checked on mobile phone, tablet and laptop.
 
-For the full test process see Testing.md.
+For the full test process see [Testing.md](Testing.md).
 
 ### Database
 
