@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
-{% load static from staticfiles %}
+{% load staticfiles%}
 
 {% block stripe-css %}
-<link rel="stylesheet" href="{% static 'vendor/css/stripe.css' %}" type="text/css">
+<link rel="stylesheet" href="{% static 'css/stripe.min.css' %}" type="text/css">
 {% endblock %}
 
 {% block page_title %}Gray and Sons{% endblock %}
@@ -44,11 +44,11 @@
 </div>
 
 <div class="border  border-primary  enclose">
-    <div class="row">
-        <div class="class">
-                <p>{{ item.name | title }} {{ item.bid }}</p>
-        </div>
-    </div>
+  <div class="row">
+      <div class="class">
+            <p>{{ item.name | title }} {{ item.bid }}</p>
+      </div>
+  </div>
 </div>
 
 <div class="border  border-primary  enclose  mt-2">
