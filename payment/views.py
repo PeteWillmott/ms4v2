@@ -35,7 +35,8 @@ def payment(request, id):
     delivery_form = Delivery_Address_Form(form_data)
     billing = Billing_Address.objects.get(user=request.user)
     item = Catalogue.objects.get(id=id)
-    
+
+    # if there is a selected delivery address
     if request.method == "POST":
         if delivery_form.is_valid():
             address_used = delivery_form.save(commit=False)
@@ -59,6 +60,7 @@ def payment(request, id):
                 "item": item},
             )
 
+    # if there is not a selected delivery address.
     recipient_check = Delivery_Address.objects.filter(user=request.user)
     if recipient_check:
         context = {"recipient_form": recipient_form, "delivery_form": delivery_form}
