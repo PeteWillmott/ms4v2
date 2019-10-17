@@ -38,7 +38,7 @@ def payment(request, id):
 
     # if there is a selected delivery address
     if request.method == "POST":
-        token = request.POST.get['stripeToken'] or None
+        token = request.POST.get('stripeToken', None)
         if token:
             try:
                 charge = stripe.Charge.create(
