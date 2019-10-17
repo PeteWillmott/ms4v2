@@ -70,7 +70,7 @@ def payment(request, id):
 
 
 @login_required(login_url='/login/')
-def stripe(request, id):
+def success(request, id):
     item = Catalogue.objects.get(id=id)
     if request.method == 'POST':
         token = request.POST.get('stripeToken')
