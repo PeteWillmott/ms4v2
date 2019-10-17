@@ -38,23 +38,7 @@ def payment(request, id):
 
     # if there is a selected delivery address
     if request.method == "POST":
-        token = request.POST.get('stripeToken', None)
-        if token:
-            try:
-                charge = stripe.Charge.create(
-                    amount=item.bid,
-                    currency='gbp',
-                    description=item.name,
-                    source=token,
-                )
-
-            except:
-                messages.error(request, f"Your card was declined!")
-
-            if charge.paid:
-                return redirect('payment:paid', {"item": item})
-
-        elif delivery_form.is_valid():
+        if delivery_form.is_valid():
             address_used = delivery_form.save(commit=False)
             address_used.user = request.user
             address_used.save()
@@ -86,6 +70,21 @@ def payment(request, id):
 
 
 @login_required(login_url='/login/')
-def success(request):
-    # displays payment success message
-    return render(request, "success.html")
+def stripe(request, id):
+    item = Catalogue.objects.get(id=id)
+    if request.method == 'POST':
+        token = request.POST.get('stripeToken')
+        charge = stripe.Charge.create(
+                amount=item.bid,
+                currency='gbp',
+                description=item.name,
+                source=token,
+            )
+
+        if charge.paid:
+            return render(request, "success.html", {"item": item})
+            
+        else:
+            messages.error(request, f"Your card was declined!")
+
+    return redirect('payment:payment', id=id)
