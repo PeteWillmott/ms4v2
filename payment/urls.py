@@ -7,5 +7,5 @@ app_name = 'payment'
 urlpatterns = [
     path('bill<id>', billing, name="billing"),
     path('pay<id>', payment, name="payment"),
-    path('success', charge, name="paid")
+    path('success<id>', charge, name="paid")
 ]
