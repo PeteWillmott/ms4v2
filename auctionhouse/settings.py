@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'payment.apps.PaymentConfig',
     'crispy_forms',
     'storages',
+    'stripe',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
